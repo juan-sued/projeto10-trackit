@@ -2,19 +2,18 @@ import styled from 'styled-components';
 // import css
 import { useState } from 'react';
 //import react
-import Header from '../Header';
-import Main from '../Main';
-import TopMainBar from '../TopMainBar';
+import Header from '../shared/Header';
+import Main from '../shared/Main';
+import TopMainBar from './TopMainBar';
 import CardCreateHabit from './CardCreateHabit/CardCreateHabit';
 import TextNoHabits from './TextNoHabits';
-import Footer from '../Footer';
+import Footer from '../shared/Footer';
 //  import components
 
 export default function HabitsPage() {
-  const [daysSelecteds, setDaysSelecteds] = useState([]);
   const [showCardCreateHabit, setShowCardCreateHabit] = useState(false);
+
   function displayNoneToggle() {
-    console.log('teveclick');
     setShowCardCreateHabit(!showCardCreateHabit);
   }
   return (
@@ -27,14 +26,7 @@ export default function HabitsPage() {
             showCardCreateHabit={showCardCreateHabit}
           />
 
-          {!showCardCreateHabit ? (
-            ''
-          ) : (
-            <CardCreateHabit
-              daysSelecteds={daysSelecteds}
-              setDaysSelecteds={setDaysSelecteds}
-            />
-          )}
+          {!showCardCreateHabit ? '' : <CardCreateHabit />}
 
           <TextNoHabits />
         </MainClass>

@@ -7,7 +7,7 @@ export default function InputsLogin() {
       <form>
         <InputClass placeholder="batata" type="text" />
         <InputClass placeholder="batata" type="text" />
-        <Link to={`/cadastro`}>
+        <Link to={`/habitos`}>
           <button>Entrar</button>
         </Link>
       </form>
@@ -50,4 +50,7 @@ const InputClass = styled.input`
   background: #ffffff;
   border: 1px solid #d5d5d5;
   border-radius: 5px;
+  ::placeholder {
+    color: #dbdbdb;
+  }
 `;

@@ -1,16 +1,23 @@
 import styled from 'styled-components';
+// import css
 
-import Main from '../Main';
+import { Link } from 'react-router-dom';
+//import react
+
+import Main from '../shared/Main';
 import logo from '../../assets/logo.svg';
 import InputsRegister from './InputRegister';
+// import components
+
 export default function Register() {
   return (
     <Main>
       <MainClass>
         <LogoRegister src={logo} alt="Essa é a Logo" />
         <InputsRegister />
-
-        <ButtonUnderlined>Já tem uma conta? Faça login!</ButtonUnderlined>
+        <Link to="/">
+          <ButtonUnderlined>Já tem uma conta? Faça login!</ButtonUnderlined>
+        </Link>
       </MainClass>
     </Main>
   );

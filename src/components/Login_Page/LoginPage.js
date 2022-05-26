@@ -1,7 +1,15 @@
-import logo from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+//import react
+
 import styled from 'styled-components';
-import Main from '../Main';
+//import css
+
+import Main from '../shared/Main';
 import InputsLogin from './InputsLogin';
+//import components
+
+import logo from '../../assets/logo.svg';
+// import assets
 
 export default function LoginPage() {
   return (
@@ -9,7 +17,9 @@ export default function LoginPage() {
       <MainClass>
         <LogoLogin src={logo} alt="Essa é a Logo" />
         <InputsLogin />
-        <ButtonUnderlined>Não tem uma conta? Cadastre-se!</ButtonUnderlined>
+        <Link to="/cadastro">
+          <ButtonUnderlined>Não tem uma conta? Cadastre-se!</ButtonUnderlined>
+        </Link>
       </MainClass>
     </Main>
   );

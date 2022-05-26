@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import progress from '../assets/progress.svg';
+import progress from '../../assets/progress.svg';
 export default function Footer() {
   return (
     <FooterClass>

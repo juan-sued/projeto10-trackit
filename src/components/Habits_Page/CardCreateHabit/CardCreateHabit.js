@@ -1,15 +1,44 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import ButtonsDays from './ButtonsDays';
+import axios from 'axios';
 
-export default function CardCreateHabit({ daysSelecteds, setDaysSelecteds }) {
+export default function CardCreateHabit() {
+  const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
+
+  const [inputNewHabit, setInputNewHabit] = useState('');
+  const [daysSelecteds, setDaysSelecteds] = useState([]);
+  const [objNewHabitPost, setObjNewHabitPost] = useState({
+    name: '',
+    days: []
+  });
+  //função que pega os dados de criação do cartão
+  function submitData(event) {
+    event.preventDefault();
+    objNewHabitPost.name = inputNewHabit;
+    objNewHabitPost.days = daysSelecteds.map(indexDay => indexDay - 1);
+    setObjNewHabitPost({ ...objNewHabitPost });
+    // const promise = axios.post(URL, objNewHabitPost);
+    // promise.then(response => console.log('enviado com sucesso: ', response.data));
+    // promise.catch(err => console.log('deu ruim!!', err));
+    console.log(objNewHabitPost);
+  }
+
   return (
     <CardCreateHabitClass>
-      <input type="text" placeholder="nome do hábito" />
-      <ButtonsDays daysSelecteds={daysSelecteds} setDaysSelecteds={setDaysSelecteds} />
-      <Container>
-        <p>Cancelar</p>
-        <button>Salvar</button>
-      </Container>
+      <form onSubmit={submitData}>
+        <input
+          type="text"
+          placeholder="nome do hábito"
+          value={inputNewHabit}
+          onChange={e => setInputNewHabit(e.target.value)}
+        />
+        <ButtonsDays daysSelecteds={daysSelecteds} setDaysSelecteds={setDaysSelecteds} />
+        <Container>
+          <p>Cancelar</p>
+          <button type="submit">Salvar</button>
+        </Container>
+      </form>
     </CardCreateHabitClass>
   );
 }
@@ -50,6 +79,9 @@ const CardCreateHabitClass = styled.div`
     border: 1px solid #dbdbdb;
     border-radius: 5px;
 
-    color: red;
+    color: #666666;
+    ::placeholder {
+      color: #dbdbdb;
+    }
   }
 `;

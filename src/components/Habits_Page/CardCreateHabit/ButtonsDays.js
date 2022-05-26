@@ -23,21 +23,19 @@ function ButtonDay({ day, incrementDaySelected, index }) {
 
 //
 //função que renderiza os buttons days
-// QUANDO PASSAR PARA A API, DIMINUIR 1 DE CADA INDEX EX: D == 1 QUANDO DEVERIA SER 0
+
 export default function ButtonsDays({ daysSelecteds, setDaysSelecteds }) {
   const daysWeek = ['D', 'S', 'T', 'Q', 'Q', 'S', ' S'];
 
   function incrementDaySelected(indexDaySelected) {
     if (daysSelecteds.find(day => day === indexDaySelected)) {
-      console.log('foi removido da lista', indexDaySelected);
       const daysSelectedsFilter = daysSelecteds.filter(day => day !== indexDaySelected);
       setDaysSelecteds(daysSelectedsFilter);
     } else {
       setDaysSelecteds([...daysSelecteds, indexDaySelected]);
-      console.log('foi adicionado na lista', indexDaySelected);
     }
   }
-  console.log(daysSelecteds);
+
   return (
     <ButtonsDaysClass>
       {daysWeek.map((day, index) => (

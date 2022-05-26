@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 // import styleds
 
-import logoEscrita from '../assets/logoEscrita.svg';
-import jorelProfile from '../assets/jorelProfile.jpeg';
+import logoEscrita from '../../assets/logoEscrita.svg';
+import jorelProfile from '../../assets/jorelProfile.jpeg';
 //import assets
 export default function Header() {
   return (
