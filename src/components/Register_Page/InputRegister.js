@@ -44,13 +44,11 @@ export default function InputsRegister() {
     });
     promise.catch(err => {
       setStateButton('err');
-      console.log('respondeu erro: ', err);
     });
     setInputEmail('');
     setInputName('');
     setInputImage('');
     setInputPassword('');
-    console.log(objNewRegister);
   }
 
   if (stateButton === 'err' && inputEmail.length > 0) {
