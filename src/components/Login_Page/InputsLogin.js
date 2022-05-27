@@ -35,17 +35,15 @@ export default function InputsLogin() {
     promise.then(promise => {
       setObjLoginResponse(promise.data);
 
-      console.log('respondeu bom: ', promise.data);
       navigate('../habitos', { replace: true });
     });
     promise.catch(err => {
       setStateButton('err');
-      console.log('respondeu erro: ', err);
     });
     setInputEmail('');
     setInputPassword('');
   }
-  console.log('o objeto agora é', objLoginResponse);
+
   if (stateButton === 'err' && inputEmail.length > 0) {
     setStateButton('habilitado');
   }
@@ -61,7 +59,7 @@ export default function InputsLogin() {
         />
         <InputClass
           placeholder="password"
-          type="text"
+          type="password"
           value={inputPassword}
           onChange={e => setInputPassword(e.target.value)}
           required
@@ -139,6 +137,7 @@ const InputClass = styled.input`
   background: #ffffff;
   border: 1px solid #d5d5d5;
   border-radius: 5px;
+  padding-left: 10px;
   ::placeholder {
     color: #dbdbdb;
   }

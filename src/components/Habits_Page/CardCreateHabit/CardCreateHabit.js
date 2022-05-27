@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import ButtonsDays from './ButtonsDays';
 import axios from 'axios';
+import UserContext from '../../../contexts/UserContext';
 
 export default function CardCreateHabit() {
+  //variável que guarda o valor do response de login
+  const { objLoginResponse, setObjLoginResponse } = useContext(UserContext);
+  //header com token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${objLoginResponse.token}`
+    }
+  };
+
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
 
   const [inputNewHabit, setInputNewHabit] = useState('');
@@ -18,10 +28,11 @@ export default function CardCreateHabit() {
     objNewHabitPost.name = inputNewHabit;
     objNewHabitPost.days = daysSelecteds.map(indexDay => indexDay - 1);
     setObjNewHabitPost({ ...objNewHabitPost });
-    // const promise = axios.post(URL, objNewHabitPost);
-    // promise.then(response => console.log('enviado com sucesso: ', response.data));
-    // promise.catch(err => console.log('deu ruim!!', err));
-    console.log(objNewHabitPost);
+    const body = objNewHabitPost;
+    const promise = axios.post(URL, body, config);
+
+    promise.then(response => console.log('enviado com sucesso: ', response.data));
+    promise.catch(err => console.log('deu ruim!!', err));
   }
 
   return (
