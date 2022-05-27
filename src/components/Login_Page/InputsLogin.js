@@ -8,7 +8,7 @@ import axios from 'axios';
 //import axios
 export default function InputsLogin() {
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
-
+  const [objLoginResponse, setObjLoginResponse] = useState({});
   const navigate = useNavigate();
 
   const [stateButton, setStateButton] = useState('habilitado');
@@ -25,14 +25,16 @@ export default function InputsLogin() {
     objLogin.email = inputEmail;
     objLogin.password = inputPassword;
     // ===
-    const provobjLogin = { ...objLogin };
-    setObjLogin(provobjLogin);
+
+    setObjLogin({ ...objLogin });
 
     const promise = axios.post(URL, objLogin);
 
     promise.then(promise => {
+      setObjLoginResponse(promise.data);
+
+      console.log('respondeu bom: ', promise.data);
       navigate('../habitos', { replace: true });
-      console.log('respondeu erro: ', promise.data);
     });
     promise.catch(err => {
       setStateButton('err');
@@ -41,6 +43,7 @@ export default function InputsLogin() {
     setInputEmail('');
     setInputPassword('');
   }
+  console.log('o objeto agora é', objLoginResponse);
   if (stateButton === 'err' && inputEmail.length > 0) {
     setStateButton('habilitado');
   }
@@ -80,7 +83,7 @@ export default function InputsLogin() {
               <ThreeDots color="white" height={40} width={40} />
             </ContainerLoading>
           ) : (
-            'Cadastrar'
+            'Entrar'
           )}
         </LoginButton>
       </form>
