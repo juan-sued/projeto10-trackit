@@ -40,4 +40,7 @@ const ButtonUnderlined = styled.button`
   border: none;
   text-decoration: underline;
   color: #52b6ff;
+  :hover {
+    cursor: pointer;
+  }
 `;

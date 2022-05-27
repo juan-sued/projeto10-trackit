@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 //import css
-import { useState } from 'react';
+import UserContext from '../../contexts/UserContext';
+//import context
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 //import react
@@ -8,7 +10,7 @@ import axios from 'axios';
 //import axios
 export default function InputsLogin() {
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
-  const [objLoginResponse, setObjLoginResponse] = useState({});
+  const { objLoginResponse, setObjLoginResponse } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [stateButton, setStateButton] = useState('habilitado');

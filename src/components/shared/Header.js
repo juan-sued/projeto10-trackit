@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 // import styleds
 
+import UserContext from '../../contexts/UserContext';
+import { useContext } from 'react';
 import logoEscrita from '../../assets/logoEscrita.svg';
 import jorelProfile from '../../assets/jorelProfile.jpeg';
 //import assets
 export default function Header() {
+  const { objLoginResponse } = useContext(UserContext);
   return (
     <HeaderClass>
       <LogoSript src={logoEscrita} alt="logoEscita" />
-      <ProfileImage src={jorelProfile} alt="logoEscita" />
+      <ProfileImage src={objLoginResponse.image} alt="F" />
     </HeaderClass>
   );
 }
