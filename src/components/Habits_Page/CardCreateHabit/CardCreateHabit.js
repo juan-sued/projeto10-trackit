@@ -48,17 +48,21 @@ export default function CardCreateHabit({ displayNoneToggle }) {
   const [loading, setLoading] = useState('');
 
   if (loading === 401 && inputNewHabit.length > 0) {
+    console.log(inputNewHabit);
     setLoading('habilitado');
   }
+  // JUAN DO FUTURO COM TEMPO: REFATORA TODO ESSE CÓDIGO ABAIXO E COLOCA NUM IF
   return (
     <CardCreateHabitClass>
       <form onSubmit={submitData}>
-        <input
+        <InputNewHabit
           type="text"
           placeholder="nome do hábito"
           value={inputNewHabit}
           onChange={e => setInputNewHabit(e.target.value)}
           disabled={loading === 'loading' ? 'disable' : ''}
+          backgroundcolor={loading === 'loading' ? '#F2F2F2' : 'white'}
+          colorf={loading === 'loading' ? '#b3b3b3' : '#666666'}
         />
         <ButtonsDays daysSelecteds={daysSelecteds} setDaysSelecteds={setDaysSelecteds} />
         <Container>
@@ -85,6 +89,22 @@ export default function CardCreateHabit({ displayNoneToggle }) {
     </CardCreateHabitClass>
   );
 }
+
+const InputNewHabit = styled.input`
+  font-family: 'Lexend Deca';
+  width: 303px;
+  height: 45px;
+  font-size: 19.976px;
+  background: ${props => props.backgroundcolor};
+  color: ${props => props.colorf};
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  padding-left: 10px;
+
+  ::placeholder {
+    color: #dbdbdb;
+  }
+`;
 const ContainerLoading = styled.div`
   display: flex;
   justify-content: center;
@@ -121,19 +141,4 @@ const CardCreateHabitClass = styled.div`
   background-color: white;
   padding: 16px;
   border-radius: 5px;
-
-  input {
-    font-family: 'Lexend Deca';
-    width: 303px;
-    height: 45px;
-    font-size: 19.976px;
-    background: #ffffff;
-    border: 1px solid #dbdbdb;
-    border-radius: 5px;
-
-    color: #666666;
-    ::placeholder {
-      color: #dbdbdb;
-    }
-  }
 `;
