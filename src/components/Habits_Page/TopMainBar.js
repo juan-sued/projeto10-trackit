@@ -27,5 +27,8 @@ const Container = styled.div`
     border-radius: 5px;
     color: white;
     font-size: 26.976px;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;

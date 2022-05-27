@@ -107,6 +107,9 @@ const LoginButton = styled.button`
   font-size: ${props => props.fontsize};
   color: white;
   font-family: 'Lexend Deca', sans-serif;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const ContainerFormClass = styled.div`

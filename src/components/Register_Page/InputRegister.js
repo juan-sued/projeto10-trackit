@@ -129,6 +129,9 @@ const RegisterButton = styled.button`
   font-size: 20.976px;
   color: white;
   font-family: 'Lexend Deca', sans-serif;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const ContainerFormClass = styled.div`
