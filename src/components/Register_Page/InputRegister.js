@@ -73,7 +73,7 @@ export default function InputsRegister() {
           required
         />
         <InputClass
-          placeholder="image"
+          placeholder="Url da foto"
           type="url"
           value={inputImage}
           onChange={e => setInputImage(e.target.value)}
@@ -92,7 +92,7 @@ export default function InputsRegister() {
             stateButton === 'err'
               ? '#d4d4d4'
               : stateButton === 'loading'
-              ? '#52B6FF'
+              ? '#86CCFF'
               : '#52B3FF'
           }
           type="submit"

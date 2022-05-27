@@ -10,7 +10,7 @@ import axios from 'axios';
 //import axios
 export default function InputsLogin() {
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
-  const { objLoginResponse, setObjLoginResponse } = useContext(UserContext);
+  const { setObjLoginResponse } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [stateButton, setStateButton] = useState('habilitado');
@@ -71,7 +71,7 @@ export default function InputsLogin() {
             stateButton === 'err'
               ? '#d4d4d4'
               : stateButton === 'loading'
-              ? '#52B6FF'
+              ? '#86CCFF'
               : '#52B3FF'
           }
           type="submit"

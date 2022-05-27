@@ -11,8 +11,10 @@ import Footer from '../shared/Footer';
 //  import components
 
 export default function HabitsPage() {
+  //variável de estado que guarda o estado do cardCreateHabit
   const [showCardCreateHabit, setShowCardCreateHabit] = useState(false);
 
+  //função que esconde ou mostra o cardCreateHabit
   function displayNoneToggle() {
     setShowCardCreateHabit(!showCardCreateHabit);
   }
@@ -26,7 +28,11 @@ export default function HabitsPage() {
             showCardCreateHabit={showCardCreateHabit}
           />
 
-          {!showCardCreateHabit ? '' : <CardCreateHabit />}
+          {!showCardCreateHabit ? (
+            ''
+          ) : (
+            <CardCreateHabit displayNoneToggle={displayNoneToggle} />
+          )}
 
           <TextNoHabits />
         </MainClass>
