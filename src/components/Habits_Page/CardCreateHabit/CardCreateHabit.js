@@ -6,7 +6,7 @@ import UserContext from '../../../contexts/UserContext';
 
 export default function CardCreateHabit() {
   //variável que guarda o valor do response de login
-  const { objLoginResponse, setObjLoginResponse } = useContext(UserContext);
+  const { objLoginResponse } = useContext(UserContext);
   //header com token
   const config = {
     headers: {

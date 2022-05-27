@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
 import { useContext } from 'react';
 import logoEscrita from '../../assets/logoEscrita.svg';
-import jorelProfile from '../../assets/jorelProfile.jpeg';
+
 //import assets
 export default function Header() {
   const { objLoginResponse } = useContext(UserContext);
@@ -18,6 +18,7 @@ export default function Header() {
 const LogoSript = styled.img``;
 
 const ProfileImage = styled.img`
+  object-fit: cover;
   width: 51px;
   height: 51px;
   left: 306px;

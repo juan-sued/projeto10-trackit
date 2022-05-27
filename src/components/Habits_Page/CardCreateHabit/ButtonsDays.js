@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 //função que componentiza um buttonDay
-function ButtonDay({ day, incrementDaySelected, index }) {
+function ButtonDay({ day, incrementDaySelected, index, type }) {
   const [ButtonDaySelected, setButtonDaySelected] = useState(false);
   function buttonClicked(index) {
     incrementDaySelected(index + 1);
@@ -15,6 +15,7 @@ function ButtonDay({ day, incrementDaySelected, index }) {
       backgroundColor={!ButtonDaySelected ? '#FFFFFF' : ' #dbdbdb'}
       colorFont={!ButtonDaySelected ? '#dbdbdb' : ' #FFFFFF'}
       onClick={() => buttonClicked(index)}
+      type="button"
     >
       {day}
     </ButtonDayClass>
