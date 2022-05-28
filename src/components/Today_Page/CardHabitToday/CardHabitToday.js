@@ -53,8 +53,24 @@ export default function CardHabitToday({
         <Container>
           <h3>{name}</h3>
           <div>
-            <p>Sequência atual: {currentSequence} dias</p>
-            <p>Seu recorde: {highestSequence} dias</p>
+            <span>
+              <p>Sequência atual: </p>
+              <Paragraph color={done ? '#8FC549' : '#666666'}>
+                {currentSequence} dias
+              </Paragraph>
+            </span>
+            <span>
+              <p>Seu recorde: </p>
+              <Paragraph
+                color={
+                  highestSequence !== 0 && highestSequence >= currentSequence
+                    ? '#8FC549'
+                    : '#666666'
+                }
+              >
+                {highestSequence} dias
+              </Paragraph>
+            </span>
           </div>
         </Container>
         <form onSubmit={done ? cardCheckedOff : cardCheckedOn}>
@@ -72,6 +88,13 @@ export default function CardHabitToday({
     </CardHabitTodayClass>
   );
 }
+
+const Paragraph = styled.p`
+  margin-top: 2px;
+  font-size: 13px;
+  margin-right: 3px;
+  color: ${props => props.color};
+`;
 
 const ContainerLoading = styled.div`
   display: flex;
@@ -121,7 +144,18 @@ const Container = styled.div`
   }
 
   p {
+    margin-top: 2px;
     font-size: 13px;
+    margin-right: 3px;
+  }
+
+  div {
+    width: 65%;
+  }
+  span {
+    display: flex;
+
+    justify-content: start;
   }
 `;
 const SpanContainer = styled.div`
