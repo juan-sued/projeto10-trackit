@@ -1,15 +1,33 @@
 import styled from 'styled-components';
 import ButtonsDaysHistoric from './ButtonDaysHistoric';
-import UserContext from '../../../contexts/UserContext';
-import { useContext } from 'react';
+import axios from 'axios';
+export default function CardHabitHistoric({ habit, id, days, token }) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
 
-export default function CardHabitHistoric({ habit, id, days }) {
+  const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`;
+
+  function deleteCard() {
+    const confirm = prompt('Excluir hábito?');
+    if (confirm[0].toLocaleLowerCase() === 'sim') {
+      const promise = axios.delete(URL, config);
+      promise.then(promise => console.log('card excluído', promise.data));
+      promise.catch(err => console.log(err));
+    } else {
+      console.log('card não apagado');
+      return;
+    }
+  }
+
   return (
     <CardHabitClass>
       <Container>
         <h3>{habit}</h3>
         <ContainerIcon>
-          <ion-icon name="trash-outline"></ion-icon>
+          <ion-icon name="trash-outline" onClick={deleteCard}></ion-icon>
         </ContainerIcon>
       </Container>
       <ButtonsDaysHistoric daysObj={days} />
@@ -21,6 +39,9 @@ const ContainerIcon = styled.div`
   position: relative;
   bottom: 5px;
   left: 4px;
+  ion-icon {
+    color: #666666;
+  }
 `;
 
 const Container = styled.div`

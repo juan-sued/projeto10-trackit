@@ -4,7 +4,11 @@ import ButtonsDays from './ButtonsDays';
 import axios from 'axios';
 import UserContext from '../../../contexts/UserContext';
 import { ThreeDots } from 'react-loader-spinner';
-export default function CardCreateHabit({ displayNoneToggle }) {
+export default function CardCreateHabit({
+  displayNoneToggle,
+  setKeyRequest,
+  keyRequest
+}) {
   //variável que guarda o valor do response de login
   const { objLoginResponse } = useContext(UserContext);
   //header com token
@@ -22,6 +26,7 @@ export default function CardCreateHabit({ displayNoneToggle }) {
     name: '',
     days: []
   });
+
   //função que pega os dados de criação do cartão
   function submitData(event) {
     event.preventDefault();
@@ -37,7 +42,9 @@ export default function CardCreateHabit({ displayNoneToggle }) {
     promise.then(response => {
       console.log('enviado com sucesso: ', response.data);
       displayNoneToggle();
+      setKeyRequest(!keyRequest);
     });
+
     promise.catch(err => {
       setLoading(err.response.status);
       console.log('deu ruim!!', err);

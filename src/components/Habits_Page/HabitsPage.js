@@ -34,12 +34,15 @@ export default function HabitsPage() {
   // variável de estado que guarda os objetos de cards historics
   const [objHistoricCardsHabit, setObjHistoricCardsHabit] = useState(null);
 
+  // headerToken
   const config = {
     headers: {
       Authorization: `Bearer ${objLoginResponse.token}`
     }
   };
-
+  //variável de estado que atualiza a lista de cards
+  const [keyRequest, setKeyRequest] = useState(false);
+  // atualiza a lista de cardsHabits
   useEffect(() => {
     const promise = axios.get(URL, config);
     promise.then(promise => {
@@ -47,7 +50,7 @@ export default function HabitsPage() {
       console.log(promise.data);
     });
     promise.catch(err => console.log('deu erro ', err));
-  }, [showCardCreateHabit]);
+  }, [keyRequest]);
 
   return (
     <>
@@ -61,7 +64,11 @@ export default function HabitsPage() {
           {!showCardCreateHabit ? (
             ''
           ) : (
-            <CardCreateHabit displayNoneToggle={displayNoneToggle} />
+            <CardCreateHabit
+              displayNoneToggle={displayNoneToggle}
+              setKeyRequest={setKeyRequest}
+              keyRequest={keyRequest}
+            />
           )}
           {objHistoricCardsHabit === null ? (
             <ContainerLoading>
@@ -74,6 +81,7 @@ export default function HabitsPage() {
                 habit={cardHabit.name}
                 id={cardHabit.id}
                 days={cardHabit.days}
+                token={objLoginResponse.token}
               />
             ))
           )}
