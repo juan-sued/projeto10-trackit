@@ -17,7 +17,7 @@ import HabitsPage from '../Habits_Page/HabitsPage';
 
 export default function App() {
   const [objLoginResponse, setObjLoginResponse] = useState({});
-  console.log(objLoginResponse);
+
   return (
     <UserContext.Provider value={{ objLoginResponse, setObjLoginResponse }}>
       <BrowserRouter>

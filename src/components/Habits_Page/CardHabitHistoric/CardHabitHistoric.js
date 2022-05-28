@@ -1,24 +1,33 @@
 import styled from 'styled-components';
 import ButtonsDaysHistoric from './ButtonDaysHistoric';
 import axios from 'axios';
-export default function CardHabitHistoric({ habit, id, days, token }) {
+export default function CardHabitHistoric({
+  habit,
+  id,
+  days,
+  token,
+  setKeyRequest,
+  keyRequest
+}) {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
   };
-
+  // url para delete
   const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`;
-
+  // função que deleta o catão
   function deleteCard() {
     const confirm = prompt(
-      'Excluir hábito?                                    (vai ter um pop-up bonito aqui um dia, confia'
+      'Excluir hábito? \n(vai ter um pop-up bonito aqui um dia, confia'
     );
     if (confirm === null || confirm === '') {
       return;
     } else if (confirm[0].toLocaleLowerCase() === 's') {
       const promise = axios.delete(URL, config);
-      promise.then(promise => console.log('card excluído', promise.data));
+      promise.then(promise => {
+        setKeyRequest(!keyRequest);
+      });
       promise.catch(err => console.log(err));
     } else {
       return;

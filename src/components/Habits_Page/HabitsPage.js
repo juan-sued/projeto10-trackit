@@ -51,9 +51,8 @@ export default function HabitsPage() {
     const promise = axios.get(URL, config);
     promise.then(promise => {
       setObjHistoricCardsHabit(promise.data);
-      console.log(promise.data);
     });
-    promise.catch(err => console.log('deu erro ', err));
+    promise.catch(err => console.log(err));
   }, [keyRequest]);
 
   return (
@@ -86,6 +85,8 @@ export default function HabitsPage() {
                 id={cardHabit.id}
                 days={cardHabit.days}
                 token={objLoginResponse.token}
+                setKeyRequest={setKeyRequest}
+                keyRequest={keyRequest}
               />
             ))
           )}

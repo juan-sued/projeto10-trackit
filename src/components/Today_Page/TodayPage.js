@@ -39,9 +39,8 @@ export function TodayPage() {
 
     promise.then(promise => {
       setArrCardsHabitToday(promise.data);
-      console.log('a resposta é: ', promise);
     });
-    promise.catch(err => console.log('deu ruim: ', err));
+    promise.catch(err => console.log(err));
   }, []);
 
   return (

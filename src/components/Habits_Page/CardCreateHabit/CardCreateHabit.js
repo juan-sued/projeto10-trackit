@@ -40,14 +40,12 @@ export default function CardCreateHabit({
     const promise = axios.post(URL, body, config);
 
     promise.then(response => {
-      console.log('enviado com sucesso: ', response.data);
       displayNoneToggle();
       setKeyRequest(!keyRequest);
     });
 
     promise.catch(err => {
       setLoading(err.response.status);
-      console.log('deu ruim!!', err);
     });
     setInputNewHabit('');
   }
@@ -55,7 +53,6 @@ export default function CardCreateHabit({
   const [loading, setLoading] = useState('');
 
   if (loading === 401 && inputNewHabit.length > 0) {
-    console.log(inputNewHabit);
     setLoading('habilitado');
   }
   // JUAN DO FUTURO COM TEMPO: REFATORA TODO ESSE CÓDIGO ABAIXO E COLOCA NUM IF
