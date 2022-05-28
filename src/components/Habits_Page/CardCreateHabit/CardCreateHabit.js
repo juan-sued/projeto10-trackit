@@ -141,4 +141,5 @@ const CardCreateHabitClass = styled.div`
   background-color: white;
   padding: 16px;
   border-radius: 5px;
+  margin-bottom: 10px;
 `;

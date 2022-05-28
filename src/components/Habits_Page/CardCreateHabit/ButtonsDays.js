@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 //função que componentiza um buttonDay
-function ButtonDay({ day, incrementDaySelected, index, type }) {
+function ButtonDay({ day, incrementDaySelected, index }) {
   const [ButtonDaySelected, setButtonDaySelected] = useState(false);
   function buttonClicked(index) {
     incrementDaySelected(index + 1);
