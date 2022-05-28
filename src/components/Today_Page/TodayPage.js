@@ -21,7 +21,7 @@ import TopMainBarToday from './TopMainBarToday';
 
 export function TodayPage() {
   // variável de estado que guarda os objetos de cards historics
-  const { objLoginResponse, setObjLoginResponse } = useContext(UserContext);
+  const { objLoginResponse } = useContext(UserContext);
 
   // headerToken
   const config = {
@@ -33,6 +33,7 @@ export function TodayPage() {
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today';
 
   const [arrCardsHabitToday, setArrCardsHabitToday] = useState(null);
+  const [keyRequestCardsToday, setKeyRequestCardsToday] = useState(false);
 
   useEffect(() => {
     const promise = axios.get(URL, config);
@@ -41,7 +42,7 @@ export function TodayPage() {
       setArrCardsHabitToday(promise.data);
     });
     promise.catch(err => console.log(err));
-  }, []);
+  }, [keyRequestCardsToday]);
 
   return (
     <>
@@ -63,6 +64,9 @@ export function TodayPage() {
                 done={CardToday.done}
                 currentSequence={CardToday.currentSequence}
                 highestSequence={CardToday.highestSequence}
+                config={config}
+                keyRequestCardsToday={keyRequestCardsToday}
+                setKeyRequestCardsToday={setKeyRequestCardsToday}
               />
             ))
           )}
