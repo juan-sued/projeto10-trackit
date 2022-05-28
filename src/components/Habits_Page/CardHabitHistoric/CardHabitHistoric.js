@@ -38,7 +38,7 @@ const CardHabitClass = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 340px;
-  height: 91px;
+  min-height: 91px;
   border-radius: 5px;
   padding: 15px;
   margin-bottom: 10px;

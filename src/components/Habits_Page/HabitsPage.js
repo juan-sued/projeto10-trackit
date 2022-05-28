@@ -47,7 +47,7 @@ export default function HabitsPage() {
       console.log(promise.data);
     });
     promise.catch(err => console.log('deu erro ', err));
-  }, []);
+  }, [showCardCreateHabit]);
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function HabitsPage() {
           )}
           {objHistoricCardsHabit === null ? (
             <ContainerLoading>
-              <ThreeDots color="white" height={40} width={40} />
+              <ThreeDots color="#52b6ff" height={40} width={40} />
             </ContainerLoading>
           ) : (
             objHistoricCardsHabit.map((cardHabit, index) => (
@@ -77,8 +77,11 @@ export default function HabitsPage() {
               />
             ))
           )}
-
-          <TextNoHabits />
+          {objHistoricCardsHabit !== null && objHistoricCardsHabit.length > 0 ? (
+            ''
+          ) : (
+            <TextNoHabits />
+          )}
         </MainClass>
       </Main>
       <Footer />
@@ -95,4 +98,5 @@ const ContainerLoading = styled.div`
 const MainClass = styled.main`
   margin-top: 69px;
   background-color: transparent;
+  margin-bottom: 100px;
 `;
