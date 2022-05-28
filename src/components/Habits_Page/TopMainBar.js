@@ -16,9 +16,6 @@ const Container = styled.div`
   width: 100%;
   min-height: 85px;
 
-  h1 {
-    font-size: 23px;
-  }
   button {
     height: 35px;
     width: 40px;

@@ -35,7 +35,7 @@ export default function InputsLogin() {
     promise.then(promise => {
       setObjLoginResponse(promise.data);
 
-      navigate('../habitos', { replace: true });
+      navigate('../hoje', { replace: true });
     });
     promise.catch(err => {
       setStateButton('err');

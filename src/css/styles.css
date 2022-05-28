@@ -22,12 +22,19 @@ body, html {
  
   h1{
     color: var(--colorBlueBlack);
+    font-size: 23px;
+    line-height: 29px;
   }
   h2{
     color: var(--colorBlue);
   }
   h3{
   color: var(--colorGreen);
+  }
+  h4{
+
+
+    
   }
 
   p{

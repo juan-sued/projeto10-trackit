@@ -14,18 +14,13 @@ export default function CardHabitHistoric({ habit, id, days, token }) {
     const confirm = prompt(
       'Excluir hábito?                                    (vai ter um pop-up bonito aqui um dia, confia'
     );
-    console.log('O valor do confirm é ', confirm);
     if (confirm === null || confirm === '') {
-      console.log('card não apagado pq é null');
       return;
     } else if (confirm[0].toLocaleLowerCase() === 's') {
       const promise = axios.delete(URL, config);
       promise.then(promise => console.log('card excluído', promise.data));
       promise.catch(err => console.log(err));
     } else {
-      console.log(confirm);
-
-      console.log('card não apagado pq cancelou');
       return;
     }
   }
