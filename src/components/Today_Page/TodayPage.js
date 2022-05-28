@@ -82,7 +82,7 @@ const ContainerLoading = styled.div`
 `;
 
 const MainClass = styled.main`
-  margin-top: 69px;
+  margin-top: 80px;
   background-color: transparent;
   margin-bottom: 100px;
 `;

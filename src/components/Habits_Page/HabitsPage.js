@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 // import css
+
 import UserContext from '../../contexts/UserContext';
 import { useState, useEffect, useContext } from 'react';
 //import react
+
 import Header from '../shared/Header';
 import Main from '../shared/Main';
 import TopMainBar from './TopMainBar';
@@ -10,10 +12,13 @@ import CardCreateHabit from './CardCreateHabit/CardCreateHabit';
 import CardHabitHistoric from './CardHabitHistoric/CardHabitHistoric';
 import TextNoHabits from './TextNoHabits';
 import Footer from '../shared/Footer';
-import axios from 'axios';
+//  import components
 
 import { ThreeDots } from 'react-loader-spinner';
-//  import components
+//import loading
+
+import axios from 'axios';
+//import axios
 
 export default function HabitsPage() {
   //variável de estado que guarda o estado do cardCreateHabit

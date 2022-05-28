@@ -1,9 +1,23 @@
 import styled from 'styled-components';
-
+import dayjs from 'dayjs';
 export default function TopMainBarToday() {
+  function getDay() {
+    const daysWeek = [
+      'Domingo',
+      'Segunda',
+      'Terça',
+      'Quarta',
+      'Quinta',
+      'Sexta',
+      'Sábado'
+    ];
+
+    return `${daysWeek[dayjs().day()]}, ${dayjs().format('DD/MM')}`;
+  }
+
   return (
     <TopMainBarTodayClass>
-      <h1>Segunda, 17/05</h1>
+      <h1>{getDay()}</h1>
       <p>Nenhum hábito concluído</p>
     </TopMainBarTodayClass>
   );

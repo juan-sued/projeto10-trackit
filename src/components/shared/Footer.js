@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import progress from '../../assets/progress.svg';
+import { Link } from 'react-router-dom';
 export default function Footer() {
   return (
     <FooterClass>
-      <h2>Hábitos</h2>
-      <ContainerProgressClass>
-        <img src={progress} alt="" />
-      </ContainerProgressClass>
+      <Link style={{ textDecoration: 'none' }} to="/habitos">
+        <h2>Hábitos</h2>
+      </Link>
+      <Link style={{ textDecoration: 'none' }} to="/hoje">
+        <ContainerProgressClass>
+          <img src={progress} alt="" />
+          <h2>Hoje</h2>
+        </ContainerProgressClass>
+      </Link>
 
       <h2>histórico</h2>
     </FooterClass>
@@ -16,6 +22,12 @@ export default function Footer() {
 const ContainerProgressClass = styled.footer`
   position: relative;
   bottom: 16px;
+  h2 {
+    position: relative;
+    bottom: 54px;
+    left: 28px;
+    color: white;
+  }
 `;
 
 const FooterClass = styled.footer`
