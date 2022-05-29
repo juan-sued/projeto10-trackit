@@ -33,6 +33,7 @@ export function TodayPage() {
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today';
 
   const [arrCardsHabitToday, setArrCardsHabitToday] = useState(null);
+
   const [keyRequestCardsToday, setKeyRequestCardsToday] = useState(false);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export function TodayPage() {
       <Header />
       <Main>
         <MainClass>
-          <TopMainBarToday />
+          <TopMainBarToday arrCardsHabitToday={arrCardsHabitToday} />
 
           {arrCardsHabitToday === null ? (
             <ContainerLoading>
