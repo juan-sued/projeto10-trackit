@@ -12,8 +12,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import LoginPage from '../Login_Page/LoginPage';
 import RegisterPage from '../Register_Page/RegisterPage';
-import { TodayPage } from '../Today_Page/TodayPage';
+import TodayPage from '../Today_Page/TodayPage';
 import HabitsPage from '../Habits_Page/HabitsPage';
+import HistoricPage from '../Historic_page/HistoricPage';
 // import pages
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/cadastro" element={<RegisterPage />} />
             <Route path="/hoje" element={<TodayPage />} />
             <Route path="/habitos" element={<HabitsPage />} />
+            <Route path="/historico" element={<HistoricPage />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

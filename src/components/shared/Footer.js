@@ -31,7 +31,9 @@ export default function Footer() {
         </ContainerProgressClass>
       </Link>
 
-      <h2>histórico</h2>
+      <Link style={{ textDecoration: 'none' }} to={'/historico'}>
+        <h2>histórico</h2>
+      </Link>
     </FooterClass>
   );
 }

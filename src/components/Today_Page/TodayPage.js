@@ -19,7 +19,7 @@ import CardHabitToday from './CardHabitToday/CardHabitToday';
 import TopMainBarToday from './TopMainBarToday';
 // imports component
 
-export function TodayPage() {
+export default function TodayPage() {
   // variável de estado que guarda os objetos de cards historics
   const { objLoginResponse } = useContext(UserContext);
 
