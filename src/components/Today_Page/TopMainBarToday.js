@@ -26,27 +26,25 @@ export default function TopMainBarToday({ arrCardsHabitToday }) {
       {percent > 0 ? (
         <Percent> {percent.toFixed(0)}% dos hábitos concluídos </Percent>
       ) : (
-        <p>Nenhum hábito concluído</p>
+        <Paragraph>Nenhum hábito concluído</Paragraph>
       )}
     </TopMainBarTodayClass>
   );
 }
 
-const Percent = styled.p`
-  font-size: 18px;
-  line-height: 22px;
-  color: #bababa;
-  color: #8fc549;
-`;
-
 const TopMainBarTodayClass = styled.div`
   width: 100%;
   padding: 10px;
   margin-bottom: 28px;
+`;
+const Paragraph = styled.p`
+  font-size: 18px;
+  line-height: 22px;
+  color: #bababa;
+`;
 
-  p {
-    font-size: 18px;
-    line-height: 22px;
-    color: #bababa;
-  }
+const Percent = styled.p`
+  font-size: 18px;
+  line-height: 22px;
+  color: #8fc549;
 `;
