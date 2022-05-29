@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
 
 //função que componentiza um buttonDay
 function ButtonDayHistoric({ day, index, daysObj }) {
