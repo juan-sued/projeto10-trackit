@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import progress from '../../assets/progress.svg';
+
 import { Link } from 'react-router-dom';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { useContext } from 'react';
+import PercentContext from '../../contexts/PercentContext';
+
 export default function Footer() {
+  const { percent } = useContext(PercentContext);
   return (
     <FooterClass>
       <Link style={{ textDecoration: 'none' }} to="/habitos">
@@ -9,7 +14,19 @@ export default function Footer() {
       </Link>
       <Link style={{ textDecoration: 'none' }} to="/hoje">
         <ContainerProgressClass>
-          <img src={progress} alt="" />
+          <CircularProgressbar
+            value={percent}
+            background={true}
+            backgroundPadding={6}
+            styles={buildStyles({
+              textColor: 'white',
+              backgroundColor: '#52b6ff',
+              pathColor: 'white',
+              trailColor: '#52b6ff',
+              strokeLinecap: 'round',
+              pathTransitionDuration: 0.4
+            })}
+          />
           <h2>Hoje</h2>
         </ContainerProgressClass>
       </Link>
@@ -19,13 +36,16 @@ export default function Footer() {
   );
 }
 
-const ContainerProgressClass = styled.footer`
+const ContainerProgressClass = styled.div`
+  width: 100px;
+  height: 100px;
   position: relative;
-  bottom: 16px;
+  bottom: 30px;
+
   h2 {
     position: relative;
-    bottom: 54px;
-    left: 28px;
+    bottom: 60px;
+    left: 33px;
     color: white;
   }
 `;

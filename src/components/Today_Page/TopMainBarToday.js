@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import { useContext } from 'react';
+import PercentContext from '../../contexts/PercentContext';
+
 export default function TopMainBarToday({ arrCardsHabitToday }) {
-  let percent = 0;
+  const { percent, setPercent } = useContext(PercentContext);
+
   if (arrCardsHabitToday !== null) {
     const listCardsDone = arrCardsHabitToday.filter(habit => habit.done === true);
-    percent = (listCardsDone.length * 100) / arrCardsHabitToday.length;
+    setPercent((listCardsDone.length * 100) / arrCardsHabitToday.length);
   }
   function getDay() {
     const daysWeek = [
