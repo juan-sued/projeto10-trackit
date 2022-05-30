@@ -77,6 +77,7 @@ export default function InputsLogin() {
               : '#52B3FF'
           }
           type="submit"
+          disabled={stateButton === 'loading' ? 'disabled' : ''}
         >
           {stateButton === 'err' ? (
             'Email ou/e senha inválido(s)!'
