@@ -56,6 +56,7 @@ export default function InputsLogin() {
           value={inputEmail}
           onChange={e => setInputEmail(e.target.value)}
           required
+          disabled={stateButton === 'loading' ? 'disabled' : ''}
         />
         <InputClass
           placeholder="password"
@@ -63,6 +64,7 @@ export default function InputsLogin() {
           value={inputPassword}
           onChange={e => setInputPassword(e.target.value)}
           required
+          disabled={stateButton === 'loading' ? 'disabled' : ''}
         />
 
         <LoginButton
