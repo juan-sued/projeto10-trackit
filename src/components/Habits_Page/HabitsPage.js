@@ -38,16 +38,16 @@ export default function HabitsPage() {
   // variável de estado que guarda os objetos de cards historics
   const [objHistoricCardsHabit, setObjHistoricCardsHabit] = useState(null);
 
-  // headerToken
-  const config = {
-    headers: {
-      Authorization: `Bearer ${objLoginResponse.token}`
-    }
-  };
   //variável de estado que atualiza a lista de cards
   const [keyRequest, setKeyRequest] = useState(false);
   // atualiza a lista de cardsHabits
   useEffect(() => {
+    // headerToken
+    const config = {
+      headers: {
+        Authorization: `Bearer ${objLoginResponse.token}`
+      }
+    };
     const promise = axios.get(URL, config);
     promise.then(promise => {
       setObjHistoricCardsHabit(promise.data);

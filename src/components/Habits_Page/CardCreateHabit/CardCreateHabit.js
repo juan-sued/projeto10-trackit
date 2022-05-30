@@ -12,11 +12,6 @@ export default function CardCreateHabit({
   //variável que guarda o valor do response de login
   const { objLoginResponse } = useContext(UserContext);
   //header com token
-  const config = {
-    headers: {
-      Authorization: `Bearer ${objLoginResponse.token}`
-    }
-  };
 
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
 
@@ -36,6 +31,11 @@ export default function CardCreateHabit({
     objNewHabitPost.name = inputNewHabit;
     objNewHabitPost.days = daysSelecteds.map(indexDay => indexDay - 1);
     setObjNewHabitPost({ ...objNewHabitPost });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${objLoginResponse.token}`
+      }
+    };
     const body = objNewHabitPost;
     const promise = axios.post(URL, body, config);
 

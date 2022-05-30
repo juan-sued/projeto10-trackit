@@ -11,7 +11,7 @@ export default function TopMainBarToday({ arrCardsHabitToday }) {
       const listCardsDone = arrCardsHabitToday.filter(habit => habit.done === true);
       setPercent((listCardsDone.length * 100) / arrCardsHabitToday.length);
     }
-  }, []);
+  }, [arrCardsHabitToday]);
 
   function getDay() {
     const daysWeek = [
