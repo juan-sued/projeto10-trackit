@@ -20,8 +20,10 @@ export default function InputsLogin() {
     email: '',
     password: ''
   });
+
   function login(event) {
     event.preventDefault();
+
     setStateButton('loading');
     // ===
     objLogin.email = inputEmail;
@@ -30,18 +32,41 @@ export default function InputsLogin() {
 
     setObjLogin({ ...objLogin });
 
-    const promise = axios.post(URL, objLogin);
+    //storage
 
-    promise.then(promise => {
-      setObjLoginResponse(promise.data);
+    const objLoginJSON = JSON.stringify(objLogin);
+    console.log(objLoginJSON);
+    localStorage.setItem('objLoginStorage', objLoginJSON);
+    console.log('localStorage é:  ', localStorage.getItem('objLoginStorage'));
+    const objLoginSaved = JSON.parse(objLoginJSON);
+    console.log('object saved é:  ', objLoginSaved);
+    //storage
 
-      navigate('../hoje', { replace: true });
-    });
-    promise.catch(err => {
-      setStateButton('err');
-    });
-    setInputEmail('');
-    setInputPassword('');
+    if (localStorage.getItem('objLoginStorage').length > 0) {
+      const promise = axios.post(URL, objLoginSaved);
+      promise.then(promise => {
+        setObjLoginResponse(promise.data);
+
+        navigate('../hoje', { replace: true });
+      });
+      promise.catch(err => {
+        setStateButton('err');
+      });
+      setInputEmail('');
+      setInputPassword('');
+    } else {
+      const promise = axios.post(URL, objLogin);
+      promise.then(promise => {
+        setObjLoginResponse(promise.data);
+
+        navigate('../hoje', { replace: true });
+      });
+      promise.catch(err => {
+        setStateButton('err');
+      });
+      setInputEmail('');
+      setInputPassword('');
+    }
   }
 
   if (stateButton === 'err' && inputEmail.length > 0) {
