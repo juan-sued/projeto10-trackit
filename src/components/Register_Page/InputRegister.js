@@ -18,13 +18,10 @@ export default function InputsRegister() {
     password: ''
   });
 
-  const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up';
+  const URL = 'http://localhost:5000/sign-up';
 
   const [stateButton, setStateButton] = useState('habilitado');
-  //
-  //
-  //
-  //função que atualiza e envia o obj post para novo cadastro
+
   function newRegister(event) {
     event.preventDefault();
     setStateButton('loading');
@@ -34,15 +31,16 @@ export default function InputsRegister() {
     objNewRegister.image = inputImage;
     objNewRegister.password = inputPassword;
     // ===
-    const provObjNewRegister = { ...objNewRegister };
-    setObjNewRegister(provObjNewRegister);
+
+    setObjNewRegister({ ...objNewRegister });
 
     const promise = axios.post(URL, objNewRegister);
-
+    console.log(objNewRegister);
     promise.then(() => {
       navigate('../', { replace: true });
     });
     promise.catch(err => {
+      console.log(err);
       setStateButton('err');
     });
     setInputEmail('');

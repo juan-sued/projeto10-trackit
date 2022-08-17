@@ -9,13 +9,16 @@ import { ThreeDots } from 'react-loader-spinner';
 import axios from 'axios';
 //import axios
 export default function InputsLogin() {
-  const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
+  const URL = 'http://localhost:5000/sign-in';
+
   const { setObjLoginResponse } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const [stateButton, setStateButton] = useState('habilitado');
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
+
   const [objLogin, setObjLogin] = useState({
     email: '',
     password: ''
@@ -23,7 +26,6 @@ export default function InputsLogin() {
 
   function login(event) {
     event.preventDefault();
-
     setStateButton('loading');
     // ===
     objLogin.email = inputEmail;
@@ -32,41 +34,18 @@ export default function InputsLogin() {
 
     setObjLogin({ ...objLogin });
 
-    //storage
+    const promise = axios.post(URL, objLogin);
 
-    const objLoginJSON = JSON.stringify(objLogin);
-    console.log(objLoginJSON);
-    localStorage.setItem('objLoginStorage', objLoginJSON);
-    console.log('localStorage é:  ', localStorage.getItem('objLoginStorage'));
-    const objLoginSaved = JSON.parse(objLoginJSON);
-    console.log('object saved é:  ', objLoginSaved);
-    //storage
+    promise.then(promise => {
+      setObjLoginResponse(promise.data);
 
-    if (localStorage.getItem('objLoginStorage').length > 0) {
-      const promise = axios.post(URL, objLoginSaved);
-      promise.then(promise => {
-        setObjLoginResponse(promise.data);
-
-        navigate('../hoje', { replace: true });
-      });
-      promise.catch(err => {
-        setStateButton('err');
-      });
-      setInputEmail('');
-      setInputPassword('');
-    } else {
-      const promise = axios.post(URL, objLogin);
-      promise.then(promise => {
-        setObjLoginResponse(promise.data);
-
-        navigate('../hoje', { replace: true });
-      });
-      promise.catch(err => {
-        setStateButton('err');
-      });
-      setInputEmail('');
-      setInputPassword('');
-    }
+      navigate('../hoje', { replace: true });
+    });
+    promise.catch(err => {
+      setStateButton('err');
+    });
+    setInputEmail('');
+    setInputPassword('');
   }
 
   if (stateButton === 'err' && inputEmail.length > 0) {

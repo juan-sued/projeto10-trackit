@@ -9,7 +9,6 @@ function ButtonDay({ day, incrementDaySelected, index }) {
 
     setButtonDaySelected(!ButtonDaySelected);
   }
-
   return (
     <ButtonDayClass
       backgroundColor={!ButtonDaySelected ? '#FFFFFF' : ' #dbdbdb'}

@@ -22,15 +22,26 @@ export default function CardCreateHabit({
     days: []
   });
 
+  function cancel() {
+    objNewHabitPost.name = inputNewHabit;
+    objNewHabitPost.days = daysSelecteds.map(indexDay => indexDay - 1);
+    setObjNewHabitPost({ ...objNewHabitPost });
+    const objNewHabitPostJSON = JSON.stringify(objNewHabitPost);
+    console.log(objNewHabitPostJSON);
+    localStorage.setItem('objNewHabitatPostJSONCancel', objNewHabitPostJSON);
+
+    displayNoneToggle();
+  }
+
   //função que pega os dados de criação do cartão
   function submitData(event) {
     event.preventDefault();
-
     setLoading('loading');
 
     objNewHabitPost.name = inputNewHabit;
     objNewHabitPost.days = daysSelecteds.map(indexDay => indexDay - 1);
     setObjNewHabitPost({ ...objNewHabitPost });
+
     const config = {
       headers: {
         Authorization: `Bearer ${objLoginResponse.token}`
@@ -55,7 +66,7 @@ export default function CardCreateHabit({
   if (loading === 401 && inputNewHabit.length > 0) {
     setLoading('habilitado');
   }
-  // JUAN DO FUTURO COM TEMPO: REFATORA TODO ESSE CÓDIGO ABAIXO E COLOCA NUM IF
+
   return (
     <CardCreateHabitClass>
       <form onSubmit={submitData}>
@@ -70,7 +81,7 @@ export default function CardCreateHabit({
         />
         <ButtonsDays daysSelecteds={daysSelecteds} setDaysSelecteds={setDaysSelecteds} />
         <Container>
-          <p onClick={displayNoneToggle}>Cancelar</p>
+          <p onClick={cancel}>Cancelar</p>
           <ButtonSaveCard
             type="submit"
             disabled={loading === 401 || loading === 'loading' ? 'disable' : ''}

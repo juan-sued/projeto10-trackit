@@ -21,28 +21,21 @@ import axios from 'axios';
 //import axios
 
 export default function HabitsPage() {
-  //variável de estado que guarda o estado do cardCreateHabit
   const [showCardCreateHabit, setShowCardCreateHabit] = useState(false);
 
-  //função que esconde ou mostra o cardCreateHabit
   function displayNoneToggle() {
     setShowCardCreateHabit(!showCardCreateHabit);
   }
 
-  //variável de estado que guarda o response do login
   const { objLoginResponse } = useContext(UserContext);
-
-  //url de get dos cardsHabitHistoric
+  console.log(objLoginResponse, 'aqui');
   const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
 
-  // variável de estado que guarda os objetos de cards historics
   const [objHistoricCardsHabit, setObjHistoricCardsHabit] = useState(null);
 
-  //variável de estado que atualiza a lista de cards
   const [keyRequest, setKeyRequest] = useState(false);
-  // atualiza a lista de cardsHabits
+
   useEffect(() => {
-    // headerToken
     const config = {
       headers: {
         Authorization: `Bearer ${objLoginResponse.token}`
